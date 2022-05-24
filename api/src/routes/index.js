@@ -8,19 +8,19 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get("/recipes/name", (req, res, next)=>{
+router.get("/recipes/name", async(req, res, next)=>{
 
 });
 
-router.get("/recipes/id", (req, res, next)=>{
+router.get("/recipes/id", async(req, res, next)=>{
 
 });
 
-router.get("/type", (req, res, next)=>{
+router.get("/type", async(req, res, next)=>{
 
 });
 
-router.get("/recipes", (req, res, next)=>{
+router.get("/recipes", async(req, res, next)=>{
 
 });
 
