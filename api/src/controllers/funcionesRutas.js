@@ -51,7 +51,19 @@ async function crearDietas(){
     return (tipoDietas)
 };
 
-async function crearReceta(id, name, resumen, nivelSalud, imagen, pasos, tipoDietas){
+async function crearID(){
+    const allRecipes = await Recipe.findAll();
+    const allID = allRecipes.map(r => { return r.id })
+    let id = Math.floor(Math.random()*123456)
+    while(allID.includes(id)){
+        id = Math.floor(Math.random()*123456)
+    }
+    return id
+};
+
+
+async function crearReceta(name, resumen, nivelSalud, imagen, pasos, tipoDietas){
+    const id = await crearID()
     const receta = await Recipe.create({
         id: id,
         name: name,
@@ -60,15 +72,15 @@ async function crearReceta(id, name, resumen, nivelSalud, imagen, pasos, tipoDie
         imagen: imagen,
         pasos: pasos
     })
-    const dieta = await Dietas.findAll({ where: { name: tipoDietas }})
-    receta.addDietas(dieta);
+    tipoDietas.map(async(diet) => {const dieta = await Dietas.findOne({ where: { name: diet }})
+    await receta.addDietas(dieta); })
     return receta
 }
 
-function validarAtributos(id, name, resumen, nivelSalud, imagen, pasos, tipoDietas){
-    if(!id || (typeof id !== "number") || id < 0){
-        return "El id de la receta debe existir y debe ser un numero enetro positivo"
-    } else if (!name || (typeof name !== "string") || (name.length < 0) ){
+function validarAtributos(name, resumen, nivelSalud, imagen, pasos, tipoDietas){
+    // if(!id || (typeof id !== "number") || id < 0){
+    //     return "El id de la receta debe existir y debe ser un numero enetro positivo"}
+    if (!name || (typeof name !== "string") || (name.length < 0) ){
         return "El nombre de la receta debe existir y debe ser una cadena de caracteres"
     } else if (!resumen || (typeof resumen !== "string") || (resumen.length < 0) ){
         return "El resumen de la receta debe existir y debe ser una cadena de texto"
