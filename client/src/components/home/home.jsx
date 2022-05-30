@@ -4,14 +4,14 @@ import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import DetalleReceta from "../RecetasDetail/RecetasDetail";
+import RecetasDetail from "../RecetasDetail/RecetasDetail";
 
 
 
 
 export default function Home (){
     const dispatch = useDispatch();
-    const allRecipes = useSelector ( (state) => state.allRecipes) //trae del estado inicial todas las recetas
+    const allRecipes = useSelector ( (state) => state.allRecetas) //trae del estado inicial todas las recetas
     useEffect( () => { dispatch( getAllRecipes() ) }, [dispatch] );  
     //traigo del estado las recetas cuando el componente se monta
     //en corchete va de lo que depende el useEffect(le estoy diciendo que si sucede (en este caso nada), se monte useEffect y funcione)
@@ -33,7 +33,7 @@ export default function Home (){
 
             <select></select>
         </div>
-        <DetalleReceta/>
+        <RecetasDetail/>
     </div>)
 }
 
