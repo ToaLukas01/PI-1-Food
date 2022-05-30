@@ -1,9 +1,9 @@
 
 const initialState = {
-    recipes: [],
+    // recipes: [],
     allRecipes: [],
-    dietsTypes: [],
-    detalle: []
+    // dietsTypes: [],
+    // recipesDetail: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -12,31 +12,28 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             allRecipes: action.payload,
         };
-        case "GET_RECIPE_NAME": return {
+        // case "GET_RECIPE_NAME": return {
 
-        };
-        case "GET_RECIPE_ID": return {
+        // };
+        // case "GET_RECIPE_ID": return {
 
-        };
-        case "GET_RECIPE_DETALLE": return {
+        // };
+        // case "POST_RECIPE": return {
 
-        };
-        case "POST_RECIPE": return {
+        // };
+        // case "FILTER_BY_DIETS_TYPE": return {
 
-        };
-        case "FILTER_BY_DIETS_TYPE": return {
+        // };
+        // case "ORDER_BY_NAMES_AZ": return {
 
-        };
-        case "ORDER_BY_NAMES_AZ": return {
+        // };
+        // case "ORDER_BY_NAMES_ZA": return {
 
-        };
-        case "ORDER_BY_NAMES_ZA": return {
+        // };
+        // case "ORDER_BY_PUNTAJE": return {
 
-        };
-        case "ORDER_BY_PUNTAJE": return {
-
-        };
-       default: return [...state];
+        // };
+       default: return {...state};
     };
 };
 
