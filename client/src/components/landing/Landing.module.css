@@ -1,0 +1,10 @@
+
+.background {
+    margin: 0%;
+    background-image: url(https://images.squarespace-cdn.com/content/v1/57bca5b5d482e9a23d896032/1539882578628-H7IVOBTNKJ8YC0Q0Y5ZP/ConceptoCreativo.gif?format=1000w);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;  
+}

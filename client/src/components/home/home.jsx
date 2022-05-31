@@ -4,91 +4,94 @@ import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import RecetasDetail from "../RecetasDetail/RecetasDetail";
+//import RecetasDetail from "../RecetasDetail/RecetasDetaill";
+import RecetasCard from "../RecetasCard/RecetasCard";
 
 
 
 
 export default function Home (){
     const dispatch = useDispatch();
-    const allRecipes = useSelector ( (state) => state.allRecetas) //trae del estado inicial todas las recetas
-    useEffect( () => { dispatch( getAllRecipes() ) }, [dispatch] );  
+    const allRecetas = useSelector ((state) => state.allRecetas) //trae del estado inicial todas las recetas
+    
+    useEffect(() => { 
+        dispatch(getAllRecipes())
+    }, [dispatch] );  
     //traigo del estado las recetas cuando el componente se monta
     //en corchete va de lo que depende el useEffect(le estoy diciendo que si sucede (en este caso nada), se monte useEffect y funcione)
     
-    function handleClick(c){
+    function handleClick(c){ //le pasamos un evento al handler como la variable c 
         c.preventDefault(); //evito que recargue la pagina y se rompa
-        dispatch(getAllRecipes(c));
+        dispatch(getAllRecipes());
     };
 
-    return ( <div>
-        <Link to="/recipes"><button>Crea tu propia Receta</button></Link>
+    return (<div>
         <h1>Nuestra lista de Recetas</h1>
-        <button onClick={c => {handleClick(c)}}>Recargar Recetas</button>
+
+        <Link to="/recipes"><button>Crea tu propia Receta</button></Link>
 
         <div>
-            <select></select>
-
-            <select></select>
-
-            <select></select>
+        <button onClick={c => {handleClick(c)}}>Recargar Recetas</button>
         </div>
-        <RecetasDetail/>
+
+        <div>
+            {/* lista desplegable de opciones de ordenamiento alfabetico */}
+            <select>
+                <option value="Alfabeticamente">ORdenar Alfabeticamente</option>
+                <option value="AZ">Ordenar de A-Z</option>
+                <option value="ZA">Ordenar de Z-A</option>
+            </select>
+
+            {/* lista desplegable de opciones de ordenamiento por Nivel de comida Saludable */}
+            <select>
+                <option value="nivelSalud">Ordenar por nivel de comida saludable</option>
+                <option value="ascend">Ordenar desde el mayor puntaje</option>
+                <option value="descend">Ordenar desde el menor puntaje</option>
+            </select>
+
+            {/* lista desplegable de opciones de los tipos de Dietas */}
+            <select>
+                <option velue="all">Todas las Dietas</option>
+                <option value="Gluten Free">Gluten Free</option>
+                <option value="Ketogenic">Ketogenic</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Lacto-Vegetarian">Lacto-Vegetarian</option>
+                <option value="Ovo-Vegetarian">Ovo-Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Pescetarian">Pescetarian</option>
+                <option value="Paleo">Paleo</option>
+                <option value="Primal">Primal</option>
+                <option value="Low FODMAP">Low FODMAP</option>
+                <option value="Whole30">Whole30</option>
+            </select>
+
+            {/* lista desplegable de opciones sobre las Recetas */}
+            <select>
+                <option value="ALL">Todas las Recetas</option>
+                <option value="creadas">Recetas Creadas</option>
+                <option value="actuales">Recetas Actuales</option>
+            </select>
+
+            {allRecetas.length && allRecetas.map(r => { return (<div>
+                    <Link to={"/home/" + r.id}>
+                        <RecetasCard
+                            name={r.name} 
+                            dietas={r.dietas} 
+                            imagen={r.imagen}
+                            // id = {r.id}
+                            // key={r.id} 
+                            />
+                    </Link>
+                </div>)})}
+
+            {/* {allRecetas && allRecetas.map( r=>{ return(
+                <RecetasCard mane={r.name} dietas={r.dietas} imagen={r.imagen}/>
+            )})} */}
+
+        </div>
+        
     </div>)
 }
 
 
 
-//     return (
-//         <div>
-//             <Link to='/videogame'>Create Videogame</Link>
-//             <h1>Best Videogames Project</h1>
-//             <button onClick={e => {handleClick(e)}}>
-//                 Reload All VideoGames
-//                 </button>
-//         <div>
-// <select>
-//                 <option value='asc'>Ascendente</option>
-//                 <option value='des'>Descendente</option>
-//             </select>
-//             <select>
-//                 <option value="act">Action</option>
-//                 <option value="ind">Indie</option>
-//                 <option value="adv">Adventure</option>
-//                 <option value="rpg">RPG</option>
-//                 <option value="str">Strategy</option>
-//                 <option value="sho">Shooter</option>
-//                 <option value="cas">Casual</option>
-//                 <option value="sim">Simulation</option>
-//                 <option value="puz">Puzzle</option>
-//                 <option value="arc">Arcade</option>
-//                 <option value="pla">Platformer </option>
-//                 <option value="rac">Racing </option>
-//                 <option value="mas">Massively Multiplayer </option>
-//                 <option value="spo">Sports</option>
-//                 <option value="fig">Fighting</option>
-//                 <option value="fam">Family</option>
-//                 <option value="boa">Board Games</option>
-//                 <option value="edu">Educational</option>
-//                 <option value="car">Card</option>
-//             </select>
-//             <select>
-//                 <option value="tod">Todos</option>
-//                 <option value="cre">Creados</option>
-//                 <option value="exi">Existentes</option>
-//             </select>
-
-
-//            { allVideogames.map((a) => {
-//                     return (
-//                         <fragment>
-//                             <Link to={"/home" + a.id}>
-//                               <Card name={a.name} image={a.img} genres={a.genres+""} key={a.id} />
-//                             </Link>
-//                         </fragment>
-//            );
-//                 })}
-//          </div>
-//         </div>
-//     )
-// }
