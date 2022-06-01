@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 //import RecetasDetail from "../RecetasDetail/RecetasDetaill";
 import RecetasCard from "../RecetasCard/RecetasCard";
 import Paginado from "../Paginado/Paginado";
-
+import estilos from "./Home.module.css";
 
 
 export default function Home (){
@@ -38,7 +38,7 @@ export default function Home (){
         dispatch(filtrarDietas(e.target.value))
     };
 
-    return (<div>
+    return (<div className={estilos.background}>
         <h1>Nuestra lista de Recetas</h1>
 
         <Link to="/recipes"><button>Crea tu propia Receta</button></Link>
@@ -66,16 +66,18 @@ export default function Home (){
             <select onChange={e=>handleFiltroDietas(e) }>
                 <option velue="all">Todas las Dietas</option>
                 <option value="gluten free">Gluten Free</option>
-                <option value="ketogenic">Ketogenic</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="lacto-vegetarian">Lacto-Vegetarian</option>
-                <option value="ovo-vegetarian">Ovo-Vegetarian</option>
+                <option value="dairy free">Dairy Free</option>
+                <option value="lacto ovo vegetarian">Lacto-Ovo-Vegetarian</option>
                 <option value="vegan">Vegan</option>
-                <option value="pescetarian">Pescetarian</option>
-                <option value="paleo">Paleo</option>
+                <option value="paleolithic">Paleolithic</option>
                 <option value="primal">Primal</option>
-                <option value="low FODMAP">Low FODMAP</option>
-                <option value="whole30">Whole30</option>
+                <option value="whole 30">Whole30</option>
+                <option value="fodmap friendly">Fodmap Friendly</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="pescatarian">Pescatarian</option>
+                <option value="ketogenic">Ketogenic</option>
+
+                {/* <option value="ovo-vegetarian">Ovo-Vegetarian</option> */}
             </select>
 
             {/* lista desplegable de opciones sobre las Recetas */}

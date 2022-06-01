@@ -1,0 +1,10 @@
+
+.background {
+    margin: 0%;
+    background-image: url(https://img.freepik.com/vector-gratis/fondo-pantalla-movimiento-humo-pastel_23-2148637177.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;  
+}

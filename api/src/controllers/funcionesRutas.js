@@ -42,8 +42,8 @@ async function getAllRecetas(){
 };
 
 async function crearDietas(){
-    const tipos = ["Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", 
-    "Vegan", "Pescetarian", "Paleo", "Primal", "Low FODMAP", "Whole30"];
+    const tipos = ["gluten free", "dairy free", "lacto ovo vegetarian", "vegan", "paleolithic", "primal", "whole 30",
+    "fodmap friendly", "vegetarian", "pescatarian", "ketogenic"];
     tipos.forEach(dieta => {
         Dietas.findOrCreate({ where: { name: dieta }})
     })
