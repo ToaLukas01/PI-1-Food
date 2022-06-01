@@ -6,8 +6,9 @@ export const GET_RECETAS_NAME = "GET_RECETAS_NAME"
 export const GET_RECETA_ID = "GET_RECETA_ID"
 export const POST_RECETA = "POST_RECETA"
 export const FILTER_BY_DIETS_TYPE = "FILTER_BY_DIETS_TYPE"
-export const ORDER_BY_NAMES_AZ = "ORDER_BY_NAMES_AZ"
-export const ORDER_BY_NAMES_ZA = "ORDER_BY_NAMES_ZA"
+export const ORDER_BY_ALFABETO = "ORDER_BY_ALFABETO"
+// export const ORDER_BY_NAMES_AZ = "ORDER_BY_NAMES_AZ"
+// export const ORDER_BY_NAMES_ZA = "ORDER_BY_NAMES_ZA"
 export const ORDER_BY_PUNTAJE = "ORDER_BY_PUNTAJE"
 
 
@@ -74,17 +75,21 @@ export const postRecipe = (atributos) => {
     }
 };
 
-export const filtrarDietas = () => {
-
+export const filtrarDietas = (payload) => {
+    console.log(payload)
+    return{
+        type: FILTER_BY_DIETS_TYPE,
+        payload
+    }
 };
 
-export const orderByNamesAZ = () => {
+export const orderByAlfabeto = () => {
     
 };
 
-export const orderByNamesZA= () => {
+// export const orderByNamesZA= () => {
     
-};
+// };
 
 export const orderByPuntaje = () => {
     

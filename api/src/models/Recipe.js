@@ -25,6 +25,10 @@ module.exports = (sequelize) => {
     },
     pasos: {
       type: DataTypes.TEXT
+    },
+    creadoDB: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   }, {timestamps: false});
 };

@@ -1,16 +1,16 @@
 
 const initialState = {
-    recetasAux: [],
+    recetasFiltradas: [],
     allRecetas: [],
-    //dietsTypes: [],
-    recetasDetail: []
+    //dietasTypes: [],
+    //recetasDetail: []
 };
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
         case "GET_ALL_RECETAS": return {
             ...state,
-            recetasAux: action.payload,
+            recetasFiltradas: action.payload,
             allRecetas: action.payload,
         };
         // case "GET_RECETAS_NAME": return {
@@ -25,9 +25,15 @@ const rootReducer = (state = initialState, action) => {
         // case "POST_RECETA": return {
 
         // };
-        // case "FILTER_BY_DIETS_TYPE": return {
-
-        // };
+        case "FILTER_BY_DIETS_TYPE": 
+            const allRecetas = state.allRecetas
+            //const filtradoDietas = action.payload === "all" ? allRecetas : allRecetas.filter(r => r.dietas === action.payload)
+            const filtroDietas = allRecetas.filter(r=>r.dietas?.some(d=>d.name.toLowerCase() === action.payload.toLowerCase()))
+            console.log(filtroDietas)
+            return {
+                ...state,
+                recetasFiltradas: filtroDietas
+            };
         // case "ORDER_BY_NAMES_AZ": return {
 
         // };
