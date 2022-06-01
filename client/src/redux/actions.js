@@ -25,7 +25,7 @@ export const getAllRecipes = () => {
     return async function (dispatch) {
         try {
             var recetas = await axios.get("http://localhost:3001/recipes")
-            //console.log(recetas.data)
+            console.log(recetas.data)
             return dispatch({
                 type: GET_ALL_RECETAS,
                 payload: recetas.data

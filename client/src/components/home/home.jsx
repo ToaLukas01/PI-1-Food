@@ -72,21 +72,22 @@ export default function Home (){
                 <option value="actuales">Recetas Actuales</option>
             </select>
 
-            {allRecetas.length && allRecetas.map(r => { return (<div>
-                    <Link to={"/home/" + r.id}>
-                        <RecetasCard
-                            name={r.name} 
-                            dietas={r.dietas} 
-                            imagen={r.imagen}
-                            // id = {r.id}
-                            // key={r.id} 
-                            />
-                    </Link>
-                </div>)})}
+        
+         <React.Fragment>
+             <div>
+                 {
+                 allRecetas?.map(r => {
+                         return(
+                             <div id = {r.id}>
+                                 <RecetasCard name = {r.name} dietas = {r.dietas} imagen = {r.imagen} />
+                             </div>
+                         )
+                     })
+                 }
+             </div>
+         </React.Fragment>
+     )
 
-            {/* {allRecetas && allRecetas.map( r=>{ return(
-                <RecetasCard mane={r.name} dietas={r.dietas} imagen={r.imagen}/>
-            )})} */}
 
         </div>
         
@@ -95,3 +96,17 @@ export default function Home (){
 
 
 
+            {/* {allRecetas.length && allRecetas.map(r => { return (<div>
+                    <Link to={"/home/" + r.id}>
+                        <RecetasCard
+                            name={r.name} 
+                            dietas={r.dietas} 
+                            imagen={r.imagen}
+                            key={r.id} 
+                            />
+                    </Link>
+                </div>)})} */}
+
+            {/* {allRecetas && allRecetas.map( r=>{ return(
+                <RecetasCard mane={r.name} dietas={r.dietas} imagen={r.imagen}/>
+            )})} */}

@@ -18,11 +18,10 @@ const rootReducer = (state = initialState, action) => {
             // recetasAux: action.payload,
             // allRecetas: action.payload,
         // };
-        // case "GET_RECETA_ID": return {
-            // ...state,
-            // recetasAux: action.payload,
-            // allRecetas: action.payload,
-        // };
+        case "GET_RECETA_ID": return {
+            ...state,
+            recetasDetail: action.payload
+        };
         // case "POST_RECETA": return {
 
         // };
