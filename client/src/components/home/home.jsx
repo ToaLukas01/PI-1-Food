@@ -2,7 +2,7 @@
 import React from "react";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes, filtrarDietas, creadosDB, orderByAlfabeto } from "../../redux/actions";
+import { getAllRecipes, filtrarDietas, creadosDB, orderByAlfabeto, orderByPuntaje } from "../../redux/actions";
 import { Link } from "react-router-dom";
 //import RecetasDetail from "../RecetasDetail/RecetasDetaill";
 import RecetasCard from "../RecetasCard/RecetasCard";
@@ -48,7 +48,15 @@ export default function Home (){
         dispatch(orderByAlfabeto(e.target.value))
         setPaginaActual(1);
         setOrden(`Ordenado de ${e.target.value}`)
-    }
+    };
+
+    function handleOrdenarPuntaje(e){
+        e.preventDefault();
+        dispatch(orderByPuntaje(e.target.value))
+        setPaginaActual(1);
+        setOrden(`Ordenado de ${e.target.value}`)
+    };
+
 
     return (<div className={estilos.background}>
         <h1>Nuestra lista de Recetas</h1>
@@ -68,7 +76,7 @@ export default function Home (){
             </select>
 
             {/* lista desplegable de opciones de ordenamiento por Nivel de comida Saludable */}
-            <select>
+            <select onChange={e=>handleOrdenarPuntaje(e)}>
                 <option value="nivelSalud">Ordenar por nivel de comida saludable</option>
                 <option value="ascendente">Ordenadas desde el mayor puntaje</option>
                 <option value="descendente">Ordenaas desde el menor puntaje</option>

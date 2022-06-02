@@ -92,10 +92,30 @@ const rootReducer = (state = initialState, action) => {
             };
 
 
-        // case "ORDER_BY_PUNTAJE": return {
-
-        // };
-
+        case "ORDER_BY_PUNTAJE": 
+            let allRecetas4 = action.payload === "ascendente" ?
+                state.allRecetas.sort(function(a, b){
+                    if(a.nivelSalud > b.nivelSalud){
+                        return 1;
+                    }
+                    if(b.nivelSalud > a.nivelSalud){
+                        return -1
+                    }
+                    return 0
+                })
+                : state.allRecetas.sort(function(a, b){
+                    if(a.nivelSalud > b.nivelSalud){
+                        return -1;
+                    }
+                    if(b.nivelSalud > a.nivelSalud){
+                        return 1
+                    }
+                    return 0
+                })
+            return {
+                ...state,
+                allRecetas: allRecetas4
+            };
         
        default: return {...state};
     };

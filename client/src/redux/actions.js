@@ -69,7 +69,7 @@ export const getRecipeID = (id) => {
 
 export const postRecipe = (atributos) => {
     return async function (dispatch) {
-        var post = await axios.post('http://localhost:3001/recipe', atributos);
+        var post = await axios.post('http://localhost:3001/recipes', atributos);
         return post;
     }
 };
@@ -96,10 +96,9 @@ export const orderByAlfabeto = (payload) => {
     }
 };
 
-// export const orderByNamesZA= () => {
-    
-// };
-
-export const orderByPuntaje = () => {
-    
+export const orderByPuntaje = (payload) => {
+    return{
+        type: ORDER_BY_PUNTAJE,
+        payload
+    }
 };
