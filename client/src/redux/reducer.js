@@ -2,7 +2,7 @@
 const initialState = {
     recetasFiltradas: [],
     allRecetas: [],
-    //dietasTypes: [],
+    dietas: [],
     //recetasDetail: []
 };
 
@@ -27,10 +27,15 @@ const rootReducer = (state = initialState, action) => {
         };
         
         
-        // case "POST_RECETA": return {
+        case "POST_RECETA": return {
+            ...state
+        };
 
-        // };
 
+        case "GET_DIETAS": return {
+            ...state,
+            dietas: action.payload
+        };
 
         case "FILTER_BY_DIETS_TYPE": 
             const allRecetas = state.recetasFiltradas
