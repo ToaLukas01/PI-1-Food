@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import RecetasCard from "../RecetasCard/RecetasCard";
 import Paginado from "../Paginado/Paginado";
 import estilos from "./Home.module.css";
-
+import SearchName from "../SearchName/SearchName";
 
 export default function Home (){
     const dispatch = useDispatch();
@@ -107,6 +107,8 @@ export default function Home (){
                 <option value="api">Recetas Actuales</option>
             </select>
 
+            <SearchName/>
+            
             <Paginado
             recetasPorPagina={recetasPorPagina}
             allRecetas={allRecetas.length}

@@ -15,17 +15,18 @@ const rootReducer = (state = initialState, action) => {
         };
 
 
-        // case "GET_RECETAS_NAME": return {
-            // ...state,
-            // recetasAux: action.payload,
-            // allRecetas: action.payload,
-        // };
+        case "GET_RECETAS_NAME": return {
+            ...state,
+            allRecetas: action.payload,
+        };
 
 
         case "GET_RECETA_ID": return {
             ...state,
             recetasDetail: action.payload
         };
+        
+        
         // case "POST_RECETA": return {
 
         // };
@@ -93,8 +94,9 @@ const rootReducer = (state = initialState, action) => {
 
 
         case "ORDER_BY_PUNTAJE": 
-            let allRecetas4 = action.payload === "ascendente" ?
-                state.allRecetas.sort(function(a, b){
+            const allRecetas4 = state.allRecetas
+            if(action.payload === "ascendente" ){
+                allRecetas4.sort(function(a, b){
                     if(a.nivelSalud > b.nivelSalud){
                         return 1;
                     }
@@ -103,7 +105,8 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0
                 })
-                : state.allRecetas.sort(function(a, b){
+            } else if(action.payload === "descendente" ){
+                state.allRecetas.sort(function(a, b){
                     if(a.nivelSalud > b.nivelSalud){
                         return -1;
                     }
@@ -112,6 +115,7 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0
                 })
+            }    
             return {
                 ...state,
                 allRecetas: allRecetas4
