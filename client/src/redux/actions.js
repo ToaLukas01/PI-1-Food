@@ -7,8 +7,7 @@ export const GET_RECETA_ID = "GET_RECETA_ID"
 export const POST_RECETA = "POST_RECETA"
 export const FILTER_BY_DIETS_TYPE = "FILTER_BY_DIETS_TYPE"
 export const ORDER_BY_ALFABETO = "ORDER_BY_ALFABETO"
-// export const ORDER_BY_NAMES_AZ = "ORDER_BY_NAMES_AZ"
-// export const ORDER_BY_NAMES_ZA = "ORDER_BY_NAMES_ZA"
+export const CREADOS_DB = "CREADOS_DB"
 export const ORDER_BY_PUNTAJE = "ORDER_BY_PUNTAJE"
 
 
@@ -83,8 +82,18 @@ export const filtrarDietas = (payload) => {
     }
 };
 
-export const orderByAlfabeto = () => {
-    
+export const creadosDB = (payload) => {
+    return{
+        type: CREADOS_DB,
+        payload
+    }
+};
+
+export const orderByAlfabeto = (payload) => {
+    return{
+        type: ORDER_BY_ALFABETO,
+        payload
+    }
 };
 
 // export const orderByNamesZA= () => {

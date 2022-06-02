@@ -2,7 +2,7 @@
 import React from "react";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes, filtrarDietas } from "../../redux/actions";
+import { getAllRecipes, filtrarDietas, creadosDB, orderByAlfabeto } from "../../redux/actions";
 import { Link } from "react-router-dom";
 //import RecetasDetail from "../RecetasDetail/RecetasDetaill";
 import RecetasCard from "../RecetasCard/RecetasCard";
@@ -13,6 +13,7 @@ import estilos from "./Home.module.css";
 export default function Home (){
     const dispatch = useDispatch();
     const allRecetas = useSelector ((state) => state.allRecetas) //trae del estado inicial todas las recetas
+    const [orden, setOrden] = useState("")
     const [paginaActual, setPaginaActual] = useState(1);
     const [recetasPorPagina, setRecetasPorPagina] = useState(9)
     const indiceUltimaReceta = paginaActual * recetasPorPagina
@@ -29,14 +30,25 @@ export default function Home (){
     //traigo del estado las recetas cuando el componente se monta
     //en corchete va de lo que depende el useEffect(le estoy diciendo que si sucede (en este caso nada), se monte useEffect y funcione)
     
-    function handleClick(c){ //le pasamos un evento al handler como la variable c 
-        c.preventDefault(); //evito que recargue la pagina y se rompa
+    function handleClick(e){ //le pasamos un evento al handler como la variable c 
+        e.preventDefault(); //evito que recargue la pagina y se rompa
         dispatch(getAllRecipes());
     };
 
     function handleFiltroDietas(e){
         dispatch(filtrarDietas(e.target.value))
     };
+
+    function handleCreadosDB(e){
+        dispatch(creadosDB(e.target.value))
+    };
+
+    function handleOrdenarAlfabeto(e){
+        e.preventDefault();
+        dispatch(orderByAlfabeto(e.target.value))
+        setPaginaActual(1);
+        setOrden(`Ordenado de ${e.target.value}`)
+    }
 
     return (<div className={estilos.background}>
         <h1>Nuestra lista de Recetas</h1>
@@ -49,22 +61,22 @@ export default function Home (){
 
         <div>
             {/* lista desplegable de opciones de ordenamiento alfabetico */}
-            <select>
-                <option value="Alfabeticamente">ORdenar Alfabeticamente</option>
-                <option value="AZ">Ordenar de A-Z</option>
-                <option value="ZA">Ordenar de Z-A</option>
+            <select onChange={e=>handleOrdenarAlfabeto(e)}>
+                <option value="Alfabeticamente">Ordenar Alfabeticamente</option>
+                <option value="AZ">Ordenadas de A-Z</option>
+                <option value="ZA">Ordenadas de Z-A</option>
             </select>
 
             {/* lista desplegable de opciones de ordenamiento por Nivel de comida Saludable */}
             <select>
                 <option value="nivelSalud">Ordenar por nivel de comida saludable</option>
-                <option value="ascend">Ordenar desde el mayor puntaje</option>
-                <option value="descend">Ordenar desde el menor puntaje</option>
+                <option value="ascendente">Ordenadas desde el mayor puntaje</option>
+                <option value="descendente">Ordenaas desde el menor puntaje</option>
             </select>
 
             {/* lista desplegable de opciones de los tipos de Dietas */}
-            <select onChange={e=>handleFiltroDietas(e) }>
-                <option velue="all">Todas las Dietas</option>
+            <select onChange={e=>handleFiltroDietas(e)}>
+                <option velue="ALL">Todas las Dietas</option>
                 <option value="gluten free">Gluten Free</option>
                 <option value="dairy free">Dairy Free</option>
                 <option value="lacto ovo vegetarian">Lacto-Ovo-Vegetarian</option>
@@ -81,10 +93,10 @@ export default function Home (){
             </select>
 
             {/* lista desplegable de opciones sobre las Recetas */}
-            <select>
-                <option value="ALL">Todas las Recetas</option>
-                <option value="creadas">Recetas Creadas</option>
-                <option value="actuales">Recetas Actuales</option>
+            <select onChange={e=>handleCreadosDB(e)}>
+                <option value="all">Todas las Recetas</option>
+                <option value="DB">Recetas Creadas</option>
+                <option value="api">Recetas Actuales</option>
             </select>
 
             <Paginado
