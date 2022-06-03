@@ -62,7 +62,7 @@ async function crearID(){
 };
 
 
-async function crearReceta(name, resumen, nivelSalud, imagen, pasos, dietas){
+async function crearReceta(name, resumen, nivelSalud, imagen, pasos, tipoDietas){
     const id = await crearID()
     const receta = await Recipe.create({
         id: id,
@@ -72,12 +72,12 @@ async function crearReceta(name, resumen, nivelSalud, imagen, pasos, dietas){
         imagen: imagen,
         pasos: pasos
     })
-    dietas.map(async(diet) => {const dieta = await Dietas.findOne({ where: { name: diet }})
+    tipoDietas.map(async(diet) => {const dieta = await Dietas.findOne({ where: { name: diet }})
     await receta.addDietas(dieta); })
     return receta
 }
 
-function validarAtributos(name, resumen, nivelSalud, imagen, pasos, dietas){
+function validarAtributos(name, resumen, nivelSalud, imagen, pasos, tipoDietas){
     // if(!id || (typeof id !== "number") || id < 0){
     //     return "El id de la receta debe existir y debe ser un numero enetro positivo"}
     if (!name || (typeof name !== "string") || (name.length < 0) ){

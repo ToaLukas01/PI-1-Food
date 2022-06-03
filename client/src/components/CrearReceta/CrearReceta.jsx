@@ -15,7 +15,7 @@ export default function CrearReceta(){
         nivelSalud: "",
         imagen: "",
         pasos: "",
-        dietas: []
+        tipoDietas: []
     })
 
     function handelChange(e){
@@ -27,13 +27,20 @@ export default function CrearReceta(){
     };
 
     function handleCheck(e){
-        //if(e.target.checked){           //pregunto si el target esta chequeado
+        if(e.target.checked){           //pregunto si el target esta chequeado
             setInput({                  //para luego setear el input con la opcion que le damos
                 ...input,
-                dietas:[...input, e.target.value]  //y guardar en nuestro arreglo de dietas todas las seleccionadas
+                tipoDietas:[...input, e.target.value]  //y guardar en nuestro arreglo de dietas todas las seleccionadas
             })
-        //}
+        }
     };
+
+    // function handleSelect(e){
+    //     setInput({
+    //         ...input,
+    //         tipoDietas:[...input, e.target.value]
+    //     })
+    // };
 
     function handleSubmit(e){
         e.preventDefault();
@@ -45,14 +52,14 @@ export default function CrearReceta(){
             nivelSalud: "",
             imagen: "",
             pasos: "",
-            dietas: []
+            tipoDietas: []
         })
         history.push("/home") //aqui history nos redirige al home una vez creada la receta
     };
 
     useEffect(()=>{
         dispatch(getDietas())  
-    }, [])
+    }, [dispatch]) //[]
 
     return (<div>
         <Link to="/home"><button>Volver a pagina principal</button></Link>
@@ -80,7 +87,7 @@ export default function CrearReceta(){
             </div>
             <div>
                 <label>Dietas relacionadas: </label>
-                {/* <label><input type="checkbox" name="gluten free" value="gluten free" onChange={(e)=>handleCheck(e)}/>Gluten Free</label>
+                <label><input type="checkbox" name="gluten free" value="gluten free" onChange={(e)=>handleCheck(e)}/>Gluten Free</label>
                 <label><input type="checkbox" name="dairy free" value="dairy free" onChange={(e)=>handleCheck(e)}/>Dairy Free</label>
                 <label><input type="checkbox" name="lacto ovo vegetarian" value="lacto ovo vegetarian" onChange={(e)=>handleCheck(e)}/>Lacto Ovo Vegetarian</label>
                 <label><input type="checkbox" name="vegan" value="vegan" onChange={(e)=>handleCheck(e)}/>Vegan</label>
@@ -90,12 +97,12 @@ export default function CrearReceta(){
                 <label><input type="checkbox" name="fodmap friendly" value="fodmap friendly" onChange={(e)=>handleCheck(e)}/>Fodmap Friendly</label>
                 <label><input type="checkbox" name="vegetarian" value="vegetarian" onChange={(e)=>handleCheck(e)}/>Vegetarian</label>
                 <label><input type="checkbox" name="pescatarian" value="pescatarian" onChange={(e)=>handleCheck(e)}/>Pescatarian</label>
-                <label><input type="checkbox" name="ketogenic" value="ketogenic" onChange={(e)=>handleCheck(e)}/>Ketogenic</label> */}
+                <label><input type="checkbox" name="ketogenic" value="ketogenic" onChange={(e)=>handleCheck(e)}/>Ketogenic</label>
             </div>
-            <select onChange={(e)=>handleCheck(e)}>
+            {/* <select onChange={(e)=>handleSelect(e)}>
                 {dietas.map(d =>(<option value={d.name}>{d.name} </option>))}
             </select> 
-            <ul><li>{input.dietas.map(d => d + ", ")}</li></ul>
+            <ul><li>{input.tipoDietas.map(d => d + ", ")}</li></ul> */}
 
             <button type="submit">Crear receta</button>
         </form>

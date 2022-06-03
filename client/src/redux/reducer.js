@@ -3,7 +3,7 @@ const initialState = {
     recetasFiltradas: [],
     allRecetas: [],
     dietas: [],
-    //recetasDetail: []
+    recetasDetail: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -66,6 +66,7 @@ const rootReducer = (state = initialState, action) => {
         case "CREADOS_DB": 
             const allRecetas2 = state.recetasFiltradas
             const creadosDB = action.payload === "DB" ? allRecetas2.filter(r => r.creadoDB) : allRecetas2.filter(r => !r.creadoDB)
+            console.log(creadosDB)
             return {
                 ...state,
                 allRecetas: action.payload === "all" ? allRecetas2 : creadosDB

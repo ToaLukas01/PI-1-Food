@@ -55,10 +55,10 @@ router.get("/recipes/:id", async(req, res, next)=>{
 // Crea una receta en la base de datos relacionada con sus tipos de dietas.
 router.post("/recipes", async(req, res, next)=>{
     try {
-        const { name, resumen, nivelSalud, imagen, pasos, dietas } = req.body;
-        const validacion = validarAtributos(name, resumen, nivelSalud, imagen, pasos, dietas);
+        const { name, resumen, nivelSalud, imagen, pasos, tipoDietas } = req.body;
+        const validacion = validarAtributos(name, resumen, nivelSalud, imagen, pasos, tipoDietas);
         if (validacion === true){
-            const receta = await crearReceta(name, resumen, nivelSalud, imagen, pasos, dietas)
+            const receta = await crearReceta(name, resumen, nivelSalud, imagen, pasos, tipoDietas)
             if(receta){
                 return res.status(201).send("Receta creada exitosamente")
             } 
@@ -78,7 +78,7 @@ router.post("/recipes", async(req, res, next)=>{
 router.get("/diets", async(req, res, next)=>{
     try {
         const tipoDietas = await crearDietas();
-        return res.send(tipoDietas);
+        return res.send(tipoDietas); //tipoDietas
     } catch (err){
         next(err)
     }
