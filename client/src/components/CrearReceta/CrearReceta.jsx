@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import React from "react";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,13 @@ export default function CrearReceta(){
     })
 
     function handelChange(e){
+        if(e.target.name === "nivelSalud"){
+            setInput({
+                ...input,
+                [e.target.name]: Number(e.target.value) //aqui se toma el input y se va a ir modificando segundo el valor correspondiente
+            })
+            return 
+        }
         setInput({
             ...input,
             [e.target.name]: e.target.value //aqui se toma el input y se va a ir modificando segundo el valor correspondiente
@@ -30,7 +37,7 @@ export default function CrearReceta(){
         if(e.target.checked){           //pregunto si el target esta chequeado
             setInput({                  //para luego setear el input con la opcion que le damos
                 ...input,
-                tipoDietas:[...input, e.target.value]  //y guardar en nuestro arreglo de dietas todas las seleccionadas
+                tipoDietas:[...input.tipoDietas, e.target.value]  //y guardar en nuestro arreglo de dietas todas las seleccionadas
             })
         }
     };
@@ -38,13 +45,18 @@ export default function CrearReceta(){
     // function handleSelect(e){
     //     setInput({
     //         ...input,
-    //         tipoDietas:[...input, e.target.value]
+    //         tipoDietas:[...input.tipoDietas, e.target.value]
     //     })
     // };
 
     function handleSubmit(e){
         e.preventDefault();
+        console.log(input)
         dispatch(postRecipe(input))
+        // const post = await axios.post('http://localhost:3001/recipes', input)
+        // if(post.status >= 400){
+        //     return alert("Error al crear receta..!")
+        // }
         alert("Receta Creada !")
         setInput({
             name: "",
@@ -99,9 +111,10 @@ export default function CrearReceta(){
                 <label><input type="checkbox" name="pescatarian" value="pescatarian" onChange={(e)=>handleCheck(e)}/>Pescatarian</label>
                 <label><input type="checkbox" name="ketogenic" value="ketogenic" onChange={(e)=>handleCheck(e)}/>Ketogenic</label>
             </div>
-            {/* <select onChange={(e)=>handleSelect(e)}>
-                {dietas.map(d =>(<option value={d.name}>{d.name} </option>))}
-            </select> 
+            {/* <label>Dietas relacionadas: </label>
+                <select onChange={(e)=>handleSelect(e)}>
+                    {dietas.map(d =>(<option value={d.name}>{d.name} </option>))}
+                </select> 
             <ul><li>{input.tipoDietas.map(d => d + ", ")}</li></ul> */}
 
             <button type="submit">Crear receta</button>
