@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React from "react";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 export default function CrearReceta(){
     const dispatch = useDispatch();
     const history = useHistory() //history es un metodo del router que lo que haces es redirigir a la ruta que le indiquemos
-    const dietas = useSelector((state)=> state.dietas);
+    //const dietas = useSelector((state)=> state.dietas);
     const [input, setInput] =useState({
         name: "",
         resumen: "",
@@ -17,18 +17,22 @@ export default function CrearReceta(){
         pasos: "",
         tipoDietas: []
     })
-
+    
+    useEffect(()=>{
+        dispatch(getDietas())  
+    }, [dispatch]) 
+    
     function handelChange(e){
         if(e.target.name === "nivelSalud"){
             setInput({
                 ...input,
-                [e.target.name]: Number(e.target.value) //aqui se toma el input y se va a ir modificando segundo el valor correspondiente
+                [e.target.name]: Number(e.target.value) 
             })
             return 
         }
         setInput({
             ...input,
-            [e.target.name]: e.target.value //aqui se toma el input y se va a ir modificando segundo el valor correspondiente
+            [e.target.name]: e.target.value 
         })
         console.log(input)
     };
@@ -53,10 +57,7 @@ export default function CrearReceta(){
         e.preventDefault();
         console.log(input)
         dispatch(postRecipe(input))
-        // const post = await axios.post('http://localhost:3001/recipes', input)
-        // if(post.status >= 400){
-        //     return alert("Error al crear receta..!")
-        // }
+
         alert("Receta Creada !")
         setInput({
             name: "",
@@ -69,9 +70,6 @@ export default function CrearReceta(){
         history.push("/home") //aqui history nos redirige al home una vez creada la receta
     };
 
-    useEffect(()=>{
-        dispatch(getDietas())  
-    }, [dispatch]) //[]
 
     return (<div>
         <Link to="/home"><button>Volver a pagina principal</button></Link>

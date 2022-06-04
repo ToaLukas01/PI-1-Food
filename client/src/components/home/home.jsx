@@ -4,7 +4,6 @@ import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes, filtrarDietas, creadosDB, orderByAlfabeto, orderByPuntaje } from "../../redux/actions";
 import { Link } from "react-router-dom";
-//import RecetasDetail from "../RecetasDetail/RecetasDetaill";
 import RecetasCard from "../RecetasCard/RecetasCard";
 import Paginado from "../Paginado/Paginado";
 import estilos from "./Home.module.css";
@@ -139,17 +138,3 @@ export default function Home (){
 
 
 
-            {/* {allRecetas.length && allRecetas.map(r => { return (<div>
-                    <Link to={"/home/" + r.id}>
-                        <RecetasCard
-                            name={r.name} 
-                            dietas={r.dietas} 
-                            imagen={r.imagen}
-                            key={r.id} 
-                            />
-                    </Link>
-                </div>)})} */}
-
-            {/* {allRecetas && allRecetas.map( r=>{ return(
-                <RecetasCard mane={r.name} dietas={r.dietas} imagen={r.imagen}/>
-            )})} */}

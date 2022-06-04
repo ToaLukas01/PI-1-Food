@@ -41,9 +41,6 @@ const rootReducer = (state = initialState, action) => {
             const allRecetas = state.recetasFiltradas
             let dietasAPI = []
             let dietasDB = []
-            //const filtroDietas = action.payload === "all" ? allRecetas : allRecetas.filter(r => r.dietas.name === action.payload)
-            
-            //const filtroDietas = allRecetas.filter(r=>r.dietas?.some(d=>d === action.payload))
            
             allRecetas.forEach(e => {
                 if (e.hasOwnProperty("dietas") && e.dietas.includes(action.payload)) {
