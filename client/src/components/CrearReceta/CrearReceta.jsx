@@ -9,6 +9,7 @@ export default function CrearReceta(){
     const dispatch = useDispatch();
     const history = useHistory() //history es un metodo del router que lo que haces es redirigir a la ruta que le indiquemos
     //const dietas = useSelector((state)=> state.dietas);
+    //const [error, setError] = useState({});
     const [input, setInput] =useState({
         name: "",
         resumen: "",
@@ -21,8 +22,20 @@ export default function CrearReceta(){
     useEffect(()=>{
         dispatch(getDietas())  
     }, [dispatch]) 
-    
-    function handelChange(e){
+
+    // function validarDatos(input){
+    //     let error = {}
+    //     if(!input.name){
+    //         error.name = "La Receta debe poseer un nombre";
+    //     } else if (!input.resumen){
+    //         error.resumen = "La Receta debe poseer un resumen de si misma";
+    //     } else if (input.imagen && typeof input.imagen !== "string"){
+    //         error.imagen = "La imagen de la Receta debe ser una url o dejar la casilla vacia"
+    //     }
+    //     return
+    // };
+
+    function handelInput(e){
         if(e.target.name === "nivelSalud"){
             setInput({
                 ...input,
@@ -34,6 +47,10 @@ export default function CrearReceta(){
             ...input,
             [e.target.name]: e.target.value 
         })
+        // setError(validarDatos({
+        //     ...input,
+        //     [e.target.name]: e.target.value 
+        // }))
         console.log(input)
     };
 
@@ -50,6 +67,13 @@ export default function CrearReceta(){
     //     setInput({
     //         ...input,
     //         tipoDietas:[...input.tipoDietas, e.target.value]
+    //     })
+    // };
+
+    // function handleDelete(e){
+    //     setInput({                  
+    //         ...input,
+    //         tipoDietas: input.tipoDietas.filter(d => d !== e) 
     //     })
     // };
 
@@ -77,23 +101,26 @@ export default function CrearReceta(){
         <form onSubmit={(e)=>handleSubmit(e)}>
             <div>
                 <label>Nombre: </label>
-                <input type="text" value={input.name} name="name" onChange={(e)=>handelChange(e)}/>
+                <input type="text" value={input.name} name="name" onChange={(e)=>handelInput(e)}/>
+                {/* {error.name && (<p className="error">{error.name}</p>)} */}
             </div>
             <div>
                 <label>Resumen: </label>
-                <input type="text" value={input.resumen} name="resumen" onChange={(e)=>handelChange(e)}/>
+                <input type="text" value={input.resumen} name="resumen" onChange={(e)=>handelInput(e)}/>
+                {/* {error.resumen && (<p className="error">{error.resumen}</p>)} */}
             </div>
             <div>
                 <label>Nivel de comida saludable: </label>
-                <input type="number" value={input.nivelSalud} name="nivelSalud" onChange={(e)=>handelChange(e)}/>
+                <input type="number" value={input.nivelSalud} name="nivelSalud" onChange={(e)=>handelInput(e)}/>
             </div>
             <div>
                 <label>Imagen: </label>
-                <input type="text" value={input.imagen} name="imagen" onChange={(e)=>handelChange(e)}/>
+                <input type="text" value={input.imagen} name="imagen" onChange={(e)=>handelInput(e)}/>
+                {/* {error.imagen && (<p className="error">{error.imagen}</p>)} */}
             </div>
             <div>
                 <label>Pasos a seguir: </label>
-                <input type="text" value={input.pasos} name="pasos" onChange={(e)=>handelChange(e)}/>
+                <input type="text" value={input.pasos} name="pasos" onChange={(e)=>handelInput(e)}/>
             </div>
             <div>
                 <label>Dietas relacionadas: </label>
@@ -109,14 +136,21 @@ export default function CrearReceta(){
                 <label><input type="checkbox" name="pescatarian" value="pescatarian" onChange={(e)=>handleCheck(e)}/>Pescatarian</label>
                 <label><input type="checkbox" name="ketogenic" value="ketogenic" onChange={(e)=>handleCheck(e)}/>Ketogenic</label>
             </div>
-            {/* <label>Dietas relacionadas: </label>
+            {/* <div>
+            <label>Dietas relacionadas: </label>
                 <select onChange={(e)=>handleSelect(e)}>
                     {dietas.map(d =>(<option value={d.name}>{d.name} </option>))}
                 </select> 
-            <ul><li>{input.tipoDietas.map(d => d + ", ")}</li></ul> */}
+            <ul><li>{input.tipoDietas.map(d => d + ", ")}</li></ul>
+            </div> */}
 
             <button type="submit">Crear receta</button>
         </form>
+        {/* {input.tipoDietas.map(d =>
+            <div className="divOcc">
+                <p>{d}</p>
+                <button className="botonX" onClick={(e)=>handleDelete(e)}>x</button>
+            </div>)} */}
     </div>)
 }
 

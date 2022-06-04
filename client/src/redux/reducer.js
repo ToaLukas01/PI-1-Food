@@ -71,8 +71,9 @@ const rootReducer = (state = initialState, action) => {
 
 
         case "ORDER_BY_ALFABETO":
-            let allRecetas3 = action.payload === "AZ" ?
-                state.allRecetas.sort(function(a, b){
+            const allRecetas3 = state.allRecetas
+            if(action.payload === "AZ" ){
+                allRecetas3.sort(function(a, b){
                     if(a.name.toLowerCase() > b.name.toLowerCase()){
                         return 1;
                     }
@@ -81,7 +82,8 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0
                 })
-                : state.allRecetas.sort(function(a, b){
+            } else if(action.payload === "ZA"){
+                allRecetas3.sort(function(a, b){
                     if(a.name.toLowerCase() > b.name.toLowerCase()){
                         return -1;
                     }
@@ -89,7 +91,8 @@ const rootReducer = (state = initialState, action) => {
                         return 1
                     }
                     return 0
-                })
+                })  
+            } 
             return {
                 ...state,
                 allRecetas: allRecetas3
@@ -130,3 +133,27 @@ const rootReducer = (state = initialState, action) => {
 
 export default rootReducer;
 
+// case "ORDER_BY_ALFABETO":
+//             let allRecetas3 = action.payload === "AZ" ?
+//                 state.allRecetas.sort(function(a, b){
+//                     if(a.name.toLowerCase() > b.name.toLowerCase()){
+//                         return 1;
+//                     }
+//                     if(b.name.toLowerCase() > a.name.toLowerCase()){
+//                         return -1
+//                     }
+//                     return 0
+//                 })
+//                 : state.allRecetas.sort(function(a, b){
+//                     if(a.name.toLowerCase() > b.name.toLowerCase()){
+//                         return -1;
+//                     }
+//                     if(b.name.toLowerCase() > a.name.toLowerCase()){
+//                         return 1
+//                     }
+//                     return 0
+//                 })
+//             return {
+//                 ...state,
+//                 allRecetas: allRecetas3
+//             };
