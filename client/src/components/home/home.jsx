@@ -117,7 +117,7 @@ export default function Home (){
             <React.Fragment>
                 <div>
                     {recetasActuales?.map(r => {return(
-                                <div id = {r.id}>
+                                <div key = {r.id}>
                                     <Link to={"/recipes/" + r.id}>
                                     <RecetasCard name = {r.name} dietas = {r.dietas} imagen = {r.imagen} />
                                     </Link>

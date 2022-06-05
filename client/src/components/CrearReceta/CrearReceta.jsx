@@ -4,12 +4,29 @@ import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postRecipe, getDietas } from "../../redux/actions";
 import { Link, useHistory } from "react-router-dom";
+import estilos from "./CrearReceta.module.css";
+
+// function validarDatos(input){
+//     let error = {}
+//     if(!input.name){
+//         error.name = "La Receta debe poseer un nombre";
+//     } else if (!input.resumen){
+//         error.resumen = "La Receta debe poseer un resumen de si misma";
+//     } else if (input.imagen && typeof input.imagen !== "string"){
+//         error.imagen = "La imagen de la Receta debe ser una url o dejar la casilla vacia"
+//     }
+//     return
+// };
 
 export default function CrearReceta(){
     const dispatch = useDispatch();
     const history = useHistory() //history es un metodo del router que lo que haces es redirigir a la ruta que le indiquemos
-    //const dietas = useSelector((state)=> state.dietas);
-    //const [error, setError] = useState({});
+    const dietas = useSelector((state)=> state.dietas);
+    // const [error, setError] = useState({
+    //     name: "",
+    //     resumen: "",
+    //     imagen: "",
+    // });
     const [input, setInput] =useState({
         name: "",
         resumen: "",
@@ -23,17 +40,6 @@ export default function CrearReceta(){
         dispatch(getDietas())  
     }, [dispatch]) 
 
-    // function validarDatos(input){
-    //     let error = {}
-    //     if(!input.name){
-    //         error.name = "La Receta debe poseer un nombre";
-    //     } else if (!input.resumen){
-    //         error.resumen = "La Receta debe poseer un resumen de si misma";
-    //     } else if (input.imagen && typeof input.imagen !== "string"){
-    //         error.imagen = "La imagen de la Receta debe ser una url o dejar la casilla vacia"
-    //     }
-    //     return
-    // };
 
     function handelInput(e){
         if(e.target.name === "nivelSalud"){
@@ -63,12 +69,12 @@ export default function CrearReceta(){
         }
     };
 
-    // function handleSelect(e){
-    //     setInput({
-    //         ...input,
-    //         tipoDietas:[...input.tipoDietas, e.target.value]
-    //     })
-    // };
+    function handleSelect(e){
+        setInput({
+            ...input,
+            tipoDietas:[...input.tipoDietas, e.target.value]
+        })
+    };
 
     // function handleDelete(e){
     //     setInput({                  
@@ -95,7 +101,7 @@ export default function CrearReceta(){
     };
 
 
-    return (<div>
+    return (<div className={estilos.background}>
         <Link to="/home"><button>Volver a pagina principal</button></Link>
         <h1>Crear Receta Propia</h1>
         <form onSubmit={(e)=>handleSubmit(e)}>
@@ -146,11 +152,13 @@ export default function CrearReceta(){
 
             <button type="submit">Crear receta</button>
         </form>
-        {/* {input.tipoDietas.map(d =>
-            <div className="divOcc">
+        {/* <div>
+        {input.tipoDietas.map(d => { return (
+            <div>
                 <p>{d}</p>
-                <button className="botonX" onClick={(e)=>handleDelete(e)}>x</button>
-            </div>)} */}
+                <button onClick={(e)=>handleDelete(e)}>x</button>
+            </div>)})}
+        </div> */}
     </div>)
 }
 

@@ -1,12 +1,11 @@
 
 import React from "react";
-//import { Link } from "react-router-dom";
-//let prevId = 1;
+import estilos from "./RecetasCard.module.css";
 
 export default function RecetasCard({name, dietas, imagen, id}){
     return(
         <React.Fragment>
-            <div key = {id}>
+            <div className={estilos.background} key = {id}>
                 <h2>{name}</h2>
                  {dietas[0]?.name? dietas.map(d => <h4>{d.name}</h4>) : dietas.map(d => <h4>{ d + " "}</h4>)}
                 {/* { dietas.map(d => <h4>{ d + " "}</h4>)} */}

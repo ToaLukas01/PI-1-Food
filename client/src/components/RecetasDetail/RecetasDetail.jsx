@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRecipeID } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
+import estilos from "./RecetasDetail.module.css";
 
 export default function RecetasDetail(){
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function RecetasDetail(){
         dispatch(getRecipeID(id))
     }, [dispatch, id] );  
     
-    return (<div>
+    return (<div className={estilos.background}>
           {recetas.length > 0 ?
         <div>
         <h2>{recetas[0].name}</h2>
