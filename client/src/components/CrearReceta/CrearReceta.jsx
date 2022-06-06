@@ -23,7 +23,7 @@ import estilos from "./CrearReceta.module.css";
 export default function CrearReceta(){
     const dispatch = useDispatch();
     const history = useHistory() //history es un metodo del router que lo que haces es redirigir a la ruta que le indiquemos
-    const dietas = useSelector((state)=> state.dietas);
+    //const dietas = useSelector((state)=> state.dietas);
     //const [error, setError] = useState({});
     const [input, setInput] =useState({
         name: "",
@@ -71,12 +71,12 @@ export default function CrearReceta(){
         }
     };
 
-    function handleSelect(e){
-        setInput({
-            ...input,
-            tipoDietas:[...input.tipoDietas, e.target.value]
-        })
-    };
+    // function handleSelect(e){
+    //     setInput({
+    //         ...input,
+    //         tipoDietas:[...input.tipoDietas, e.target.value]
+    //     })
+    // };
 
     // function handleDelete(e){
     //     setInput({                  

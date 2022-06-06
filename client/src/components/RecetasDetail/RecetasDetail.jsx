@@ -29,7 +29,7 @@ export default function RecetasDetail(){
 
         <p>Pasos a seguir: {recetas[0].pasos ? recetas[0].pasos : "No se han indicado pasos a seguir para esta receta"}</p>
 
-        <h4>Dietas: {!recetas[0].creadoDB ? recetas[0].dietas + "" : recetas[0].dietas.map((d) => d.name + (' '))}</h4>
+        <h4>Dietas: {recetas[0].dietas.length === 0 ? "No se han indicado dietas asociadas" : !recetas[0].creadoDB ? recetas[0].dietas + "" : recetas[0].dietas.map((d) => d.name + (' '))}</h4>
 
         <Link to="/home"><button>Volver al menu principal</button></Link>
         </div> 
