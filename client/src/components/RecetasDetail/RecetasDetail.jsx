@@ -25,7 +25,7 @@ export default function RecetasDetail(){
 
         <p><h5>Resumen del plato: {recetas[0].resumen.replace(/<[^>]*>?/g, '')}</h5></p>
 
-        <h5>NIvel de comida saludable: {recetas[0].nivelSalud ? recetas[0].nivelSalud : "No se a indicado el nivel de salud de esta receta"}</h5>
+        <h5>Nivel de comida saludable: {recetas[0].nivelSalud ? recetas[0].nivelSalud : "No se a indicado el nivel de salud de esta receta"}</h5>
 
         <p>Pasos a seguir: {recetas[0].pasos ? recetas[0].pasos : "No se han indicado pasos a seguir para esta receta"}</p>
 
