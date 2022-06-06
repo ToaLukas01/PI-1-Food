@@ -10,11 +10,13 @@ import estilos from "./CrearReceta.module.css";
 //     let error = {}
 //     if(!input.name){
 //         error.name = "La Receta debe poseer un nombre";
-//     } else if (!input.resumen){
-//         error.resumen = "La Receta debe poseer un resumen de si misma";
-//     } else if (input.imagen && typeof input.imagen !== "string"){
-//         error.imagen = "La imagen de la Receta debe ser una url o dejar la casilla vacia"
 //     }
+//     if (!input.resumen){
+//         error.resumen = "La Receta debe poseer un resumen de si misma";
+//     }
+//     // } else if (input.imagen && typeof input.imagen !== "string"){
+//     //     error.imagen = "La imagen de la Receta debe ser una url o dejar la casilla vacia"
+//     // }
 //     return
 // };
 
@@ -22,25 +24,22 @@ export default function CrearReceta(){
     const dispatch = useDispatch();
     const history = useHistory() //history es un metodo del router que lo que haces es redirigir a la ruta que le indiquemos
     const dietas = useSelector((state)=> state.dietas);
-    // const [error, setError] = useState({
-    //     name: "",
-    //     resumen: "",
-    //     imagen: "",
-    // });
+    //const [error, setError] = useState({});
     const [input, setInput] =useState({
         name: "",
         resumen: "",
-        nivelSalud: "",
-        imagen: "",
-        pasos: "",
+        nivelSalud: null,
+        imagen: null,
+        pasos: null,
         tipoDietas: []
     })
     
     useEffect(()=>{
         dispatch(getDietas())  
     }, [dispatch]) 
-
-
+    
+    
+    
     function handelInput(e){
         if(e.target.name === "nivelSalud"){
             setInput({
@@ -49,6 +48,9 @@ export default function CrearReceta(){
             })
             return 
         }
+        // if( typeof input.nivelSalud === "string" && input.nivelSalud.length > 0){
+        //     input.nivelSalud = Number(input.nivelSalud)
+        // }
         setInput({
             ...input,
             [e.target.name]: e.target.value 
@@ -86,18 +88,23 @@ export default function CrearReceta(){
     function handleSubmit(e){
         e.preventDefault();
         console.log(input)
-        dispatch(postRecipe(input))
+        if( !input.name || !input.resumen){
+            return alert("Debe complear los parametros obligatorios")
+        } else {
+            dispatch(postRecipe(input))
 
-        alert("Receta Creada !")
-        setInput({
-            name: "",
-            resumen: "",
-            nivelSalud: "",
-            imagen: "",
-            pasos: "",
-            tipoDietas: []
-        })
-        history.push("/home") //aqui history nos redirige al home una vez creada la receta
+            alert("Receta Creada !")
+            setInput({
+                name: "",
+                resumen: "",
+                nivelSalud: null,
+                imagen: null,
+                pasos: null,
+                tipoDietas: []
+            })
+            history.push("/home") //aqui history nos redirige al home una vez creada la receta
+        }
+        
     };
 
 
@@ -106,14 +113,14 @@ export default function CrearReceta(){
         <h1>Crear Receta Propia</h1>
         <form onSubmit={(e)=>handleSubmit(e)}>
             <div>
-                <label>Nombre: </label>
+                <label>Nombre*: </label>
                 <input type="text" value={input.name} name="name" onChange={(e)=>handelInput(e)}/>
-                {/* {error.name && (<p className="error">{error.name}</p>)} */}
+                {/* {error.name && (<p>{error.name}</p>)} */}
             </div>
             <div>
-                <label>Resumen: </label>
-                <input type="text" value={input.resumen} name="resumen" onChange={(e)=>handelInput(e)}/>
-                {/* {error.resumen && (<p className="error">{error.resumen}</p>)} */}
+                <label>Resumen*: </label>
+                <textarea type="text" value={input.resumen} name="resumen" onChange={(e)=>handelInput(e)}/>
+                {/* {error.resumen && (<p>{error.resumen}</p>)} */}
             </div>
             <div>
                 <label>Nivel de comida saludable: </label>
@@ -122,11 +129,11 @@ export default function CrearReceta(){
             <div>
                 <label>Imagen: </label>
                 <input type="text" value={input.imagen} name="imagen" onChange={(e)=>handelInput(e)}/>
-                {/* {error.imagen && (<p className="error">{error.imagen}</p>)} */}
+                {/* <span>{error?.imagen}</span> */}
             </div>
             <div>
                 <label>Pasos a seguir: </label>
-                <input type="text" value={input.pasos} name="pasos" onChange={(e)=>handelInput(e)}/>
+                <textarea type="text" value={input.pasos} name="pasos" onChange={(e)=>handelInput(e)}/>
             </div>
             <div>
                 <label>Dietas relacionadas: </label>

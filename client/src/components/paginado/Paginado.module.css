@@ -1,0 +1,13 @@
+
+.paginado {
+    /* display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    align-items: row;
+    justify-content: row;
+    border-right: 1px solid rgba(0, 0, 0, 0.3); */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+};
+

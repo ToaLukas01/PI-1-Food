@@ -60,7 +60,7 @@ export default function Home (){
     return (<div className={estilos.background}>
         <h1>Nuestra lista de Recetas</h1>
 
-        <Link to="/recipes"><button>Crea tu propia Receta</button></Link>
+        <Link to="/recipes" ><button >Crea tu propia Receta</button></Link>
 
         <div>
         <button onClick={c => {handleClick(c)}}>Recargar Recetas</button>
@@ -100,7 +100,7 @@ export default function Home (){
             </select>
 
             {/* lista desplegable de opciones sobre las Recetas */}
-            <select onChange={e=>handleCreadosDB(e)}>
+            <select onChange={e=>handleCreadosDB(e)} >
                 <option value="all">Todas las Recetas</option>
                 <option value="DB">Recetas Creadas</option>
                 <option value="api">Recetas Actuales</option>
@@ -115,11 +115,11 @@ export default function Home (){
             />
 
             <React.Fragment>
-                <div>
+                <div className={estilos.recetas}>
                     {recetasActuales?.map(r => {return(
                                 <div key = {r.id}>
                                     <Link to={"/recipes/" + r.id}>
-                                    <RecetasCard name = {r.name} dietas = {r.dietas} imagen = {r.imagen} />
+                                    <RecetasCard name = {r.name} dietas = {r.dietas} imagen = {r.imagen} id = {r.id} key = {r.id}/>
                                     </Link>
                                 </div>)})}
                 </div>

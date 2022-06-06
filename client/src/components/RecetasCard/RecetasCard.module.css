@@ -4,15 +4,53 @@
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin: 25%;
-    /* background-position: center; */
-    /* height: 100vh; */
-    /* width: 100vw;   */
+    /* margin: 25%; */
+    width: 300px;
+    /* background-color:aliceblue; */
+    border: 2px solid skyblue;
+    margin: 8px;
+    padding: 5px;
+    
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
 };
+.background:hover{
+    background-color:rgb(9, 138, 243);
+}
 
-.items {
+.titulo {
+    background-color:rgb(255, 195, 139);
+    position: relative;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(82, 14, 34);
+
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.dietas {
     display: flex;
     flex-direction: row;
-    justify-content: left;
-    align-items: left;
-};
+    align-items: flex-start;
+    color: rgb(82, 14, 71);
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.imagen {
+    border: 5px solid rgb(135, 235, 227);
+    margin: 5px;
+    padding: 1px;
+
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
