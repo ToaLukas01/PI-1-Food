@@ -48,6 +48,7 @@ export const getRecipeName = (name) => {
             })
         }catch(err){
             console.log(err)
+            alert("El nombre que busca no pertenece a la lista de recetas...")
         }
     };
 };

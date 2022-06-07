@@ -12,10 +12,13 @@
 };
 
 .boton {
-    color: rgb(104, 27, 27);
-    /* margin: 10px; */
-    border-color: rgb(71, 18, 1);
-    background-color: rgb(202, 111, 99);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.877);
+  border-radius: 30em;
+  background: linear-gradient(0deg, rgb(126, 118, 175) 0%, rgb(221, 163, 221) 100%);
+  border: none;
 }
 
 .recetas {

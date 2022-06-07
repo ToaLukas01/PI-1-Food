@@ -11,3 +11,50 @@
     width: 100vw;  
 };
 
+
+.contenedor {
+    display: flex;
+    /* margin: 50%;
+    padding: 10%; */
+    border-radius: 30em;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.propiedad {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(84, 69, 219) 0%, rgb(163, 221, 178) 100%);
+    border: none;
+}
+
+.escribir {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(47, 45, 45, 0.877);
+    border-radius: 10%;
+    background: linear-gradient(0deg, rgb(241, 109, 76) 0%, rgb(221, 220, 163) 100%);
+    border: none;
+}
+
+.check {
+    color: palegreen;
+    background-color: palegreen;
+}
+
+.dietas {
+    /* position:; */
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30%;
+    background: linear-gradient(0deg, rgb(84, 69, 219) 0%, rgb(163, 221, 178) 100%);
+    border: none;
+    width : 50%;
+    
+}

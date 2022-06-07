@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipeName } from "../../redux/actions";
+import estilos from "./SearchName.module.css";
 
 export default function SearchName(){
     const dispatch = useDispatch();
@@ -17,13 +18,13 @@ export default function SearchName(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(getRecipeName(name))
-        //setName("")
+        setName("")
     };
 
-    return (<div>
+    return (<div className={estilos.contenedor}>
         <React.Fragment>
-            <input type="text" placeholder="Buscar Nombre" onChange={e=>handleInputChange(e)}/>
-            <button type="submit" onClick={e=>handleSubmit(e)}>Buscar</button>
+            <input className={estilos.escribir} type="text" placeholder="Buscar Nombre" onChange={e=>handleInputChange(e)}/>
+            <button className={estilos.buscar} type="submit" onClick={e=>handleSubmit(e)}>Buscar</button>
         </React.Fragment>
     </div>)
 }

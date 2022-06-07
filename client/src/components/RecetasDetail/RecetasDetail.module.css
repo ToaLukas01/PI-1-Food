@@ -10,3 +10,74 @@
     /* height: 100vh; */
     width: 100vw;  
 };
+
+.nombre {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(98, 20, 31) 0%, rgb(235, 165, 156) 100%);
+    border: none;
+}
+
+.resumen {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(98, 20, 31) 0%, rgb(235, 165, 156) 100%);
+    border: none;
+}
+
+.nivel {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(98, 20, 31) 0%, rgb(235, 165, 156) 100%);
+    border: none;
+}
+
+.imagen {
+    border: 5px solid rgb(236, 157, 157);
+    margin: 5px;
+    padding: 1px;
+
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+
+.pasos {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(98, 20, 31) 0%, rgb(235, 165, 156) 100%);
+    border: none;
+}
+
+.dietas {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(98, 20, 31) 0%, rgb(235, 165, 156) 100%);
+    border: none;
+}
+
+.boton {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(98, 20, 31) 0%, rgb(235, 165, 156) 100%);
+    border: none;
+}

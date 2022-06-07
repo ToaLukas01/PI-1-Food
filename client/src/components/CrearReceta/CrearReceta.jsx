@@ -109,45 +109,47 @@ export default function CrearReceta(){
 
 
     return (<div className={estilos.background}>
-        <Link to="/home"><button>Volver a pagina principal</button></Link>
+        <Link to="/home"><button className={estilos.propiedad}>Volver a pagina principal</button></Link>
+        <div>
         <h1>Crear Receta Propia</h1>
-        <form onSubmit={(e)=>handleSubmit(e)}>
-            <div>
-                <label>Nombre*: </label>
-                <input type="text" value={input.name} name="name" onChange={(e)=>handelInput(e)}/>
+        </div>
+        <form className={estilos.contenedor} onSubmit={(e)=>handleSubmit(e)}>
+            <div className={estilos.contenedor}>
+                <label className={estilos.propiedad}>Nombre*: </label>
+                <input className={estilos.escribir} type="text" value={input.name} name="name" onChange={(e)=>handelInput(e)}/>
                 {/* {error.name && (<p>{error.name}</p>)} */}
             </div>
-            <div>
-                <label>Resumen*: </label>
-                <textarea type="text" value={input.resumen} name="resumen" onChange={(e)=>handelInput(e)}/>
+            <div className={estilos.contenedor}>
+                <label className={estilos.propiedad}>Resumen*: </label>
+                <textarea className={estilos.escribir} type="text" value={input.resumen} name="resumen" onChange={(e)=>handelInput(e)}/>
                 {/* {error.resumen && (<p>{error.resumen}</p>)} */}
             </div>
-            <div>
-                <label>Nivel de comida saludable: </label>
-                <input type="number" value={input.nivelSalud} name="nivelSalud" onChange={(e)=>handelInput(e)}/>
+            <div className={estilos.contenedor}>
+                <label className={estilos.propiedad}>Nivel de comida saludable: </label>
+                <input className={estilos.escribir} type="number" value={input.nivelSalud} name="nivelSalud" onChange={(e)=>handelInput(e)}/>
             </div>
-            <div>
-                <label>Imagen: </label>
-                <input type="text" value={input.imagen} name="imagen" onChange={(e)=>handelInput(e)}/>
+            <div className={estilos.contenedor}>
+                <label className={estilos.propiedad}>Imagen: </label>
+                <input className={estilos.escribir} type="text" value={input.imagen} name="imagen" onChange={(e)=>handelInput(e)}/>
                 {/* <span>{error?.imagen}</span> */}
             </div>
-            <div>
-                <label>Pasos a seguir: </label>
-                <textarea type="text" value={input.pasos} name="pasos" onChange={(e)=>handelInput(e)}/>
+            <div className={estilos.contenedor}>
+                <label className={estilos.propiedad}>Pasos a seguir: </label>
+                <textarea className={estilos.escribir} type="text" value={input.pasos} name="pasos" onChange={(e)=>handelInput(e)}/>
             </div>
-            <div>
-                <label>Dietas relacionadas: </label>
-                <label><input type="checkbox" name="gluten free" value="gluten free" onChange={(e)=>handleCheck(e)}/>Gluten Free</label>
-                <label><input type="checkbox" name="dairy free" value="dairy free" onChange={(e)=>handleCheck(e)}/>Dairy Free</label>
-                <label><input type="checkbox" name="lacto ovo vegetarian" value="lacto ovo vegetarian" onChange={(e)=>handleCheck(e)}/>Lacto Ovo Vegetarian</label>
-                <label><input type="checkbox" name="vegan" value="vegan" onChange={(e)=>handleCheck(e)}/>Vegan</label>
-                <label><input type="checkbox" name="paleolithic" value="paleolithic" onChange={(e)=>handleCheck(e)}/>Paleolithic</label>
-                <label><input type="checkbox" name="primal" value="primal" onChange={(e)=>handleCheck(e)}/>Primal</label>
-                <label><input type="checkbox" name="whole 30" value="whole 30" onChange={(e)=>handleCheck(e)}/>Whole 30</label>
-                <label><input type="checkbox" name="fodmap friendly" value="fodmap friendly" onChange={(e)=>handleCheck(e)}/>Fodmap Friendly</label>
-                <label><input type="checkbox" name="vegetarian" value="vegetarian" onChange={(e)=>handleCheck(e)}/>Vegetarian</label>
-                <label><input type="checkbox" name="pescatarian" value="pescatarian" onChange={(e)=>handleCheck(e)}/>Pescatarian</label>
-                <label><input type="checkbox" name="ketogenic" value="ketogenic" onChange={(e)=>handleCheck(e)}/>Ketogenic</label>
+            <div className={estilos.contenedor}>
+                <label className={estilos.dietas}>Dietas relacionadas: </label>
+                <label className={estilos.propiedad}><input className={estilos.check}type="checkbox" name="gluten free" value="gluten free" onChange={(e)=>handleCheck(e)}/>Gluten Free</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="dairy free" value="dairy free" onChange={(e)=>handleCheck(e)}/>Dairy Free</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="lacto ovo vegetarian" value="lacto ovo vegetarian" onChange={(e)=>handleCheck(e)}/>Lacto Ovo Vegetarian</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="vegan" value="vegan" onChange={(e)=>handleCheck(e)}/>Vegan</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="paleolithic" value="paleolithic" onChange={(e)=>handleCheck(e)}/>Paleolithic</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="primal" value="primal" onChange={(e)=>handleCheck(e)}/>Primal</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="whole 30" value="whole 30" onChange={(e)=>handleCheck(e)}/>Whole 30</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="fodmap friendly" value="fodmap friendly" onChange={(e)=>handleCheck(e)}/>Fodmap Friendly</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="vegetarian" value="vegetarian" onChange={(e)=>handleCheck(e)}/>Vegetarian</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="pescatarian" value="pescatarian" onChange={(e)=>handleCheck(e)}/>Pescatarian</label>
+                <label className={estilos.propiedad}><input type="checkbox" name="ketogenic" value="ketogenic" onChange={(e)=>handleCheck(e)}/>Ketogenic</label>
             </div>
             {/* <div>
             <label>Dietas relacionadas: </label>
@@ -156,8 +158,9 @@ export default function CrearReceta(){
                 </select> 
             <ul><li>{input.tipoDietas.map(d => d + ", ")}</li></ul>
             </div> */}
-
-            <button type="submit">Crear receta</button>
+            <div className={estilos.contenedor}>
+            <button className={estilos.propiedad} type="submit">Crear receta</button>
+            </div>
         </form>
         {/* <div>
         {input.tipoDietas.map(d => { return (

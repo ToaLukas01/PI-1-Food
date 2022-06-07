@@ -19,21 +19,21 @@ export default function RecetasDetail(){
     return (<div className={estilos.background}>
           {recetas.length > 0 ?
         <div>
-        <h2>{recetas[0].name}</h2>
+        <h2 className={estilos.nombre}>{recetas[0].name}</h2>
 
-        <img src={recetas[0].image ? recetas[0].image : recetas[0].imagen} alt="Imagen NO disponible" width="300px" height="300px" />
+        <img className={estilos.imagen} src={recetas[0].image ? recetas[0].image : recetas[0].imagen} alt="Imagen NO disponible" width="300px" height="300px" />
 
-        <p><h5>Resumen del plato: {recetas[0].resumen.replace(/<[^>]*>?/g, '')}</h5></p>
+        <p><h5  className={estilos.resumen}>Resumen del plato: {recetas[0].resumen.replace(/<[^>]*>?/g, '')}</h5></p>
 
-        <h5>Nivel de comida saludable: {recetas[0].nivelSalud ? recetas[0].nivelSalud : "No se a indicado el nivel de salud de esta receta"}</h5>
+        <h5  className={estilos.nivel}>Nivel de comida saludable: {recetas[0].nivelSalud ? recetas[0].nivelSalud : "No se a indicado el nivel de salud de esta receta"}</h5>
 
-        <p>Pasos a seguir: {recetas[0].pasos ? recetas[0].pasos : "No se han indicado pasos a seguir para esta receta"}</p>
+        <p  className={estilos.pasos}>Pasos a seguir: {recetas[0].pasos ? recetas[0].pasos : "No se han indicado pasos a seguir para esta receta"}</p>
 
-        <h4>Dietas: {recetas[0].dietas.length === 0 ? "No se han indicado dietas asociadas" : !recetas[0].creadoDB ? recetas[0].dietas + "" : recetas[0].dietas.map((d) => d.name + (' '))}</h4>
+        <h4  className={estilos.dietas}>Dietas: {recetas[0].dietas.length === 0 ? "No se han indicado dietas asociadas" : !recetas[0].creadoDB ? recetas[0].dietas + "" : recetas[0].dietas.map((d) => d.name + (' '))}</h4>
 
-        <Link to="/home"><button>Volver al menu principal</button></Link>
+        <Link to="/home"><button className={estilos.boton}>Volver al menu principal</button></Link>
         </div> 
-        : <p>Loading...</p>}
+        : <p>Cargando...</p>}
     </div>)
 }
 

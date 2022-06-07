@@ -1,0 +1,25 @@
+
+.contenedor {
+    margin: 1%;
+}
+
+.buscar {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(126, 118, 175) 0%, rgb(221, 163, 221) 100%);
+    border: none;
+}
+
+.escribir {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.877);
+    border-radius: 30em;
+    background: linear-gradient(0deg, rgb(175, 139, 118) 0%, rgb(221, 163, 221) 100%);
+    border: none;
+}
+
