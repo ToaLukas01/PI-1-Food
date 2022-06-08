@@ -87,28 +87,25 @@ router.get("/diets", async(req, res, next)=>{
 module.exports = router;
 
 
-// router.post("/recipes", async(req, res, next)=>{
+// Intento de hacer la funcion de la ruta del DELETE
+// router.delete("/recipes:id", async(req, res, next)=>{
 //     try {
-//         const { id, name, resumen, nivelSalud, imagen, pasos, tipoDietas } = req.body
-//         const receta = await Recipe.create({
-//             id: id,
-//             name: name,
-//             resumen: resumen,
-//             nivelSalud: nivelSalud,
-//             imagen: imagen,
-//             pasos: pasos
-//         })
-//         const dieta = await Dietas.findAll({ where: { name: tipoDietas }})
-//         receta.addDietas(dieta);
-//         if(receta){
-//             return res.status(201).send("Receta creada exitosamente")
-//         } else {
-//             return res.status(404).send("No se pudo crear la receta")
+//             const { id } = req.params.id //req.body
+//         const recetas = await getAllRecetas();
+//         if(!id){
+//             return res.status(404).send("El ID solicitado es incorrecto")
+//         } 
+//         const recetaDLT = recetas.find(r => r.id.toString() === id.toString())
+//         if(!recetaDLT){
+//             return res.status(404).send("No existe una receta que tenga el ID indicado")
 //         }
+//         const newRecetas = recetas.filter(r => r.id !== recetaDLT.id)
+//         return res.status(201).send("Se han actualizado las recetas")
 //     } catch (err){
 //         next(err)
 //     }
-// });
+// };
+
 
 
 // router.get("/diets", async(req, res, next)=>{

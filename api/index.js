@@ -4,7 +4,7 @@ const { conn } = require('./src/db.js');
 //const { getAllRecetas } = require("../api/src/controllers/funcionesRutas");
 
 // Syncing all the models at once.
-conn.sync({ force: false })
+conn.sync({ force: true })
 //.then(getAllRecetas, console.log("se guardaron las recetas"))
 .then(() => {
   server.listen(3001, () => {

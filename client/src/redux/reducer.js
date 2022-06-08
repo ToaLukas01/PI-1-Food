@@ -101,7 +101,7 @@ const rootReducer = (state = initialState, action) => {
 
         case "ORDER_BY_PUNTAJE": 
             const allRecetas4 = state.allRecetas
-            if(action.payload === "ascendente" ){
+            if(action.payload === "descendente" ){ 
                 allRecetas4.sort(function(a, b){
                     if(a.nivelSalud > b.nivelSalud){
                         return 1;
@@ -111,7 +111,7 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0
                 })
-            } else if(action.payload === "descendente" ){
+            } else if(action.payload === "ascendente" ){
                 state.allRecetas.sort(function(a, b){
                     if(a.nivelSalud > b.nivelSalud){
                         return -1;
@@ -157,3 +157,11 @@ export default rootReducer;
 //                 ...state,
 //                 allRecetas: allRecetas3
 //             };
+
+
+// CASE PARA EL DELETE
+// case "DELETE_RECETA": return {
+//     ...state,
+//     allRecetas: state.allRecetas.filter(r => r.id !== action.payload)
+//     recetasFiltradas: state.allRecetas.filter(r => r.id !== action.payload)
+// }

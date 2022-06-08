@@ -10,31 +10,32 @@ export const FILTER_BY_DIETS_TYPE = "FILTER_BY_DIETS_TYPE"
 export const ORDER_BY_ALFABETO = "ORDER_BY_ALFABETO"
 export const CREADOS_DB = "CREADOS_DB"
 export const ORDER_BY_PUNTAJE = "ORDER_BY_PUNTAJE"
+//export const DELETE_RECETA = "DELETE_RECETA"
 
 
 export const getAllRecipes = () => {
-    // return async function(dispatch){
-    //     axios.get("http://localhost:3001/recipes")
-    //     .then((res)=>{
-    //         return dispatch({
-    //             type: GET_ALL_RECIPES,
-    //             payload: res.data
-    //         })
-    //     })
-    //     .catch((err)=>{console.log(err)})
-    // }
-    return async function (dispatch) {
-        try {
-            var recetas = await axios.get("http://localhost:3001/recipes")
-            console.log(recetas.data)
+    return async function(dispatch){
+        axios.get("http://localhost:3001/recipes")
+        .then((res)=>{
             return dispatch({
                 type: GET_ALL_RECETAS,
-                payload: recetas.data
+                payload: res.data
             })
-        }catch(err){
-            console.log(err)
-        }
-    };       
+        })
+        .catch((err)=>{console.log(err)})
+    }
+    // return async function (dispatch) {
+    //     try {
+    //         var recetas = await axios.get("http://localhost:3001/recipes")
+    //         console.log(recetas.data)
+    //         return dispatch({
+    //             type: GET_ALL_RECETAS,
+    //             payload: recetas.data
+    //         })
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // };       
 };
 
 
@@ -118,3 +119,11 @@ export const orderByPuntaje = (payload) => {
         payload
     }
 };
+
+// Funcion de accion para del DELETE
+// export const deletearReceta = (id) => {
+//     return {
+//         type: DELETE_RECETA,
+//         payload: id
+//     }
+// };
