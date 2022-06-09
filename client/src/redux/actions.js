@@ -91,6 +91,12 @@ export const getDietas = () => {
     };
 };
 
+export const limpiarID  =()=>{
+    return {
+        type: "LIMPIAR"
+    }
+}
+
 export const filtrarDietas = (payload) => {
     console.log(payload)
     return{

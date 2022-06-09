@@ -6,25 +6,25 @@ import { postRecipe, getDietas } from "../../redux/actions";
 import { Link, useHistory } from "react-router-dom";
 import estilos from "./CrearReceta.module.css";
 
-// function validarDatos(input){
-//     let error = {}
-//     if(!input.name){
-//         error.name = "La Receta debe poseer un nombre";
-//     }
-//     if (!input.resumen){
-//         error.resumen = "La Receta debe poseer un resumen de si misma";
-//     }
-//     // } else if (input.imagen && typeof input.imagen !== "string"){
-//     //     error.imagen = "La imagen de la Receta debe ser una url o dejar la casilla vacia"
-//     // }
-//     return
-// };
+function validarDatos(input){
+    let error = {}
+    if(!input.name){
+        error.name = "La Receta debe poseer un nombre";
+    }
+    if (!input.resumen){
+        error.resumen = "La Receta debe poseer un resumen de si misma";
+    }
+    // } else if (input.imagen && typeof input.imagen !== "string"){
+    //     error.imagen = "La imagen de la Receta debe ser una url o dejar la casilla vacia"
+    // }
+    return error
+};
 
 export default function CrearReceta(){
     const dispatch = useDispatch();
     const history = useHistory() //history es un metodo del router que lo que haces es redirigir a la ruta que le indiquemos
     //const dietas = useSelector((state)=> state.dietas);
-    //const [error, setError] = useState({});
+    const [error, setError] = useState({});
     const [input, setInput] =useState({
         name: "",
         resumen: "",
@@ -55,10 +55,10 @@ export default function CrearReceta(){
             ...input,
             [e.target.name]: e.target.value 
         })
-        // setError(validarDatos({
-        //     ...input,
-        //     [e.target.name]: e.target.value 
-        // }))
+        setError(validarDatos({
+            ...input,
+            [e.target.name]: e.target.value 
+        }))
         console.log(input)
     };
 
@@ -117,12 +117,12 @@ export default function CrearReceta(){
             <div className={estilos.contenedor}>
                 <label className={estilos.propiedad}>Nombre*: </label>
                 <input className={estilos.escribir} type="text" value={input.name} name="name" onChange={(e)=>handelInput(e)}/>
-                {/* {error.name && (<p>{error.name}</p>)} */}
+                {error.name && (<p>{error.name}</p>)}
             </div>
             <div className={estilos.contenedor}>
                 <label className={estilos.propiedad}>Resumen*: </label>
                 <textarea className={estilos.escribir} type="text" value={input.resumen} name="resumen" onChange={(e)=>handelInput(e)}/>
-                {/* {error.resumen && (<p>{error.resumen}</p>)} */}
+                {error.resumen && (<p>{error.resumen}</p>)}
             </div>
             <div className={estilos.contenedor}>
                 <label className={estilos.propiedad}>Nivel de comida saludable: </label>

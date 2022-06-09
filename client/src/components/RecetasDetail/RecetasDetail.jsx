@@ -2,7 +2,7 @@
 import React from "react";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipeID } from "../../redux/actions";
+import { getRecipeID, limpiarID } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import estilos from "./RecetasDetail.module.css";
@@ -12,7 +12,8 @@ export default function RecetasDetail(){
     const recetas = useSelector( (state) => state.recetasDetail) //trae del estado inicial todas las recetas
     const { id } = useParams()
 
-    useEffect(() => { 
+    useEffect(() => {
+        dispatch(limpiarID()); 
         dispatch(getRecipeID(id))
     }, [dispatch, id] );  
     

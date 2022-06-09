@@ -26,7 +26,11 @@ const rootReducer = (state = initialState, action) => {
             recetasDetail: action.payload
         };
         
-        
+        case "LIMPIAR": return {
+            ...state,
+            recetasDetail: []
+        }
+
         case "POST_RECETA": return {
             ...state
         };
